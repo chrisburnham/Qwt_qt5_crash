@@ -11,7 +11,7 @@ Qwt_widget::Qwt_widget(QWidget *parent)
     QwtPlot(parent)
 {
   QwtPlotCanvas canvas;
-  QwtPlotZoomer* zoomer(new QwtPlotZoomer(&canvas));
+  QwtPlotZoomer* zoomer = new QwtPlotZoomer(&canvas);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
