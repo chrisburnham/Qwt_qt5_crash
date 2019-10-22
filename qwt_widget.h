@@ -10,11 +10,15 @@ class Qwt_widget : public QwtPlot
   Q_OBJECT
 
 public:
-  Qwt_widget(QWidget* parent = 0) : QwtPlot(parent)
+  Qwt_widget(QWidget* parent = 0) :
+    QwtPlot(parent),
+    m_canvas()
   {
-    QwtPlotCanvas canvas;
-    QwtPlotZoomer zoomer(&canvas); // Crashes here
+    QwtPlotZoomer zoomer(&m_canvas); // Crashes here
   }
+
+private:
+  QwtPlotCanvas m_canvas;
 };
 
 #endif // QWT_WIDGET_H
