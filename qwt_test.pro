@@ -12,8 +12,18 @@ TARGET = qwt_test
 TEMPLATE = app
 
 # Only additions to auto generated file
-INCLUDEPATH += /usr/include/qwt
-LIBS += -lqwt-qt5
+  # QWT for QT4
+  exists(/usr/local/qwt-6.0.2) {
+    # Debian stretch has qwt installed to /usr/local
+    INCLUDEPATH += /usr/local/qwt-6.0.2/include
+    LIBS += -L/usr/local/qwt-6.0.2/lib
+    LIBS += -lqwt
+
+  } else {
+    # everything else
+    include(/usr/share/qt4/mkspecs/features/qwt.prf)
+    LIBS += -lqwt
+  }
 ###
 
 # The following define makes your compiler emit warnings if you use
